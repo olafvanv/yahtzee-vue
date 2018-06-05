@@ -3,7 +3,7 @@
     <h1>Dice</h1>
     <div class="dice">
       <div class="die" :class="{ 'locked': die.locked }" v-for="(die, index) in dice" :key="die.id">
-        <img :src="require('../assets/img/' + die.value + '.png')" />
+        <img :src="require('../assets/img/' + die.value + '.png')" @click="lock(index)" />
         <button type="button" v-on:click="lock(index)">
           <span v-if="isLocked(index)">Locked</span>
           <span v-if="!isLocked(index)">Lock</span>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="buttons">
-      <md-button class="md-raised md-accent" v-on:click="roll()">Roll</md-button>
+      <md-button class="md-raised md-primary" v-on:click="roll()">Roll</md-button>
       <md-button v-on:click="reset()">Reset</md-button>
     </div>
   </div>
@@ -91,11 +91,22 @@ export default {
   display: inline-block;
   margin: 20px auto;
   overflow: auto;
+  text-align:center;
 
   .die {
-    width: 120px;
+    width:20%;
+    max-width: 120px;
     padding: 0 10px;
     float: left;
+    transition-duration: .3s;
+    img{
+      &:hover{
+        cursor:pointer;
+      }
+      &:active{
+        transform:scale(.90);
+      }
+    }
     img {
       width: 100%;
       margin: 10px 0;

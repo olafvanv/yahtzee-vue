@@ -6,11 +6,13 @@ import router from './router'
 
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
+import './assets/scss/theme.scss'
 import underscore from 'vue-underscore';
 
 Vue.use(VueMaterial)
 Vue.use(underscore)
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({
